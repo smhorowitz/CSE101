@@ -1,0 +1,79 @@
+\documentclass{article}
+\usepackage{amsthm, amssymb, amsmath,verbatim}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumerate}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+
+
+
+\newtheorem*{claim}{Claim}
+\newtheorem{ques}{Question}
+
+
+\begin{document}
+
+
+\begin{flushright}
+Seth Horowitz \\
+Collaborators: Pauline Nguyen, Pablo Volpe\\
+\end{flushright}
+
+\begin{center} \begin{LARGE}
+CSE 101 Homework 0\\
+\end{LARGE} \end{center}
+
+\begin{ques} \end{ques}
+\noindent $Alg1(n) = \Theta(n^2)$\\
+The for loop will run the while loop some amount of times proportionally to n, which in turn will run a subloop some order of n times, thus $Alg1(n) = O(n^2)$.\\
+\\
+$Alg2(n) = \Theta(nlogn)$\\
+As before, the for loop will execute n amount of times, however this time the subloop increases logarithmically with n due to the multiplications of increasing j value, thus $Alg2(n) = \Theta(nlogn)$.
+
+\begin{ques}
+\end{ques}
+
+\noindent$a(n) = \dfrac{n^2}{7} + 21 + \log(n) = \Theta(n^2)$.\\
+The $n^2$ dominates the expression, so it grows with $n^2$.\\
+
+\noindent$b(n) = n + (n-1) + (n-2) + \ldots + 1 = \Theta(n^2)$.\\
+The expression adds together n numbers each proportional in value to n. This means the expression grows equivalently to $n^2$. It can also be shown that this expression evaluates to $\dfrac{n^2 + n}{2}$, which is dominated by $n^2$.\\
+
+\noindent$c(n)= 3^{[log_2(n)]} = \Theta(n^{[\log_2(3)]})$.\\
+The logarithm identity $x^{\log_b(y)} = y^{\log_b(x)}$ shows that $3^{[\log_2(n)]} = n^{[\log_2(n)]}$\\
+
+\noindent $d(n) = [\log_2(n)]! \neq \Theta(n^c)$ for any c.\\
+$[\log_2(n)]! = nlogn$, and $nlogn$ grows differently from both linear growth $\Theta(n)$ and polynomial growth $\Theta(n^c)$.\\
+
+\noindent $e(n) = 2^n \neq \Theta(n^c)$ for any c.\\
+The exponential function $2^n$ always grows faster than any polynomial function $n^c$.
+
+\begin{ques}[Cycle Finding, 30 points]
+Recall that a $4$-cycle in a graph $G$ is a collection of four vertices $v_1,v_2,v_3,v_4$ so that $(v_1,v_2),(v_2,v_3),(v_3,v_4)$ and $(v_4,v_1)$ are all edges of $G$.
+\begin{enumerate}[(a)]
+\item Show that if $G$ is a graph with $|E|\geq 2|V|^{3/2}$, that $G$ must contain a $4$-cycle. Hint: For each vertex $v\in V$ consider all the pairs $(u,w)$ of vertices so that $u$ and $w$ are both adjacent to $v$. If the same pair $(u,w)$ shows up for two different $v$'s, show that there is a $4$-cycle.
+\item Find an efficient algorithm to determine whether or not a given graph $G$ contains a $4$-cycle. What is the asymptotic runtime of this algorithm? You should attempt to do better than the trivial algorithm of simply checking all quadruples $v_1,v_2,v_3,v_4$ of vertices.
+\end{enumerate}
+\end{ques}
+
+\begin{ques}
+\end{ques}
+
+\noindent(a) $T(2^n) = 2^n + n^2$.\\
+Since the recurrence relation will recursively run n times, there will be n multiplications of 2, equating to $2^n$, and n will be added n times, equating to $n^2$. The combination of these 2 results in $2^n + n^2$.\\
+
+\noindent(b) $T(n) = \Theta(\log n)$.
+The expression will recursively run, dividing by 2 each time until n is 1. This means it will run the amount of divisions by 2 it would take to make $n = 1$, which is $\log_2(n)$\\
+
+\noindent(c) $O(n)$ is taken from the recurrence relation based solely on seeing the value n in the expression, not taking into account how many times the expression is actually run. Although it is true that $T(n) = O(n)$, it isn't the tightest bound, and this proof doesn't get its big O values properly, nor is it really recursive.
+
+\begin{ques}
+\end{ques}
+
+If we let n equal the number of questions on the homework, then $homework(n) = O(n^2)$.
+
+\end{document} 
